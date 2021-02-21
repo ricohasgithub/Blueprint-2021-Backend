@@ -3,6 +3,7 @@ from cs50 import SQL
 from flask_cors import CORS, cross_origin
 import json
 
+from models.question_handler import Question_Handler
 
 app = Flask(__name__)
 cors = CORS(app)
@@ -20,6 +21,7 @@ def ml_func():
     textList = text.split(".")  
     # CALL ML
     print(text)
+    hiqs_handler = Question_Handler(textList)
     # SAVE TO DB
     return "hello"
 

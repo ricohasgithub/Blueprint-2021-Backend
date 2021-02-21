@@ -23,7 +23,18 @@ def ml_func():
     print(text)
     hiqs_handler = Question_Handler(textList)
 
-    questions = 
+    fitb_questions = hiqs_handler.generate_list_fitb()
+    frq_questions = hiqs_handler.generate_frq()
+
+    # Both questions and answers together
+    responses = fitb_questions + frq_questions
+
+    questions = []
+    answers = []
+
+    for response in responses:
+        questions.append(response["question"])
+        questions.append(response["answer"])
 
     # SAVE TO DB
     return "hello"

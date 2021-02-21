@@ -17,25 +17,31 @@ def ml_func():
         print("run")
         text = json.loads(request.data)
         text = text['data']
-        # text = request.json['data']
-    # call to ml should go here
+    # CALL ML
     print(text)
-    resp = "SUCCESS!"
-    # should save actually go after ml call?
-    return jsonify({'data' : resp})
+    # SAVE TO DB
+    return
 
-@app.route('/g', methods=['GET'])
-def get():
-    resp = "SUCCESS!"
-    # should save actually go after ml call?
-    return jsonify({'data' : resp})
+@app.route('/getQs', methods=['GET'])
+def sendInfo():
+    # return all questions and responses
+    quizes = db.execute("SELECT * FROM quiz")
+    questions = []
+    answers = []
+    total = []
+    for q in quizes:
+        questions.append(q["question"])
+        answers.append(q["answer"])
+    total.append(questions)
+    total.append(answers)
+    return jsonify({'data' : total})
 
 @app.route('/save')
 def save_db():
     # save term and answer to db
-    term = "blank"
+    question = "blank"
     answer = "blank"
-    db.execute("INSERT INTO quiz (term, answer) VALUES (:term, :answer)", term=term, answer=answer)
+    db.execute("INSERT INTO quiz (question, answer) VALUES (:question, :answer)", question=question, answer=answer)
     return
 
 if __name__ == '__main__':

@@ -1,7 +1,7 @@
 
 import spacy
 
-class Spacy_NN():
+class Spacy_Entity_Extractor():
 
     def __init__(self, text):
         # Load English tokenizer, tagger, parser, NER and word vectors

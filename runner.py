@@ -1,4 +1,4 @@
-from spacy_nn import Spacy_NN
+from spacy_nn import Spacy_Entity_Extractor
 from uni_sen_encoder import Semantic_Comparator
 
 text = ("When Sebastian Thrun started working on self-driving cars at "
@@ -8,12 +8,12 @@ text = ("When Sebastian Thrun started working on self-driving cars at "
         "worth talking to,” said Thrun, in an interview with Recode earlier "
         "this week.")
 
-nn = Spacy_NN(text)
+nn = Spacy_Entity_Extractor(text)
 nn.print_lem()
 
 use = Semantic_Comparator([
             "I like my phone",
-            "My phone is good."])
+            "Hello my name is Rico."])
 
 print(use.get_semantic_similarity())
 

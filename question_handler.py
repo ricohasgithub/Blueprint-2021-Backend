@@ -20,9 +20,9 @@ class Question_Handler():
     def generate_fitb(self):
         rand_sentence_seed = random.randint(0, len(self.highlights))
         nouns = self.entity_extractor[rand_sentence_seed].get_nouns()
-        blank_noun = nouns[random.randint(0, len(nouns))]
-        fitb_q1 = self.highlights[rand_sentence_seed][:self.highlights.find(blank_noun)]
-        fitb_q2 = self.highlights[rand_sentence_seed][(self.highlights.find(blank_noun) + len(blank_noun)) + 1:]
+        blank_noun = nouns[random.randint(0, len(nouns) - 1)]
+        fitb_q1 = self.highlights[rand_sentence_seed][:self.highlights[rand_sentence_seed].find(blank_noun)]
+        fitb_q2 = self.highlights[rand_sentence_seed][(self.highlights[rand_sentence_seed].find(blank_noun) + len(blank_noun)) + 1:]
         return {
             "blank": blank_noun,
             "question_b1": fitb_q1,
@@ -31,9 +31,9 @@ class Question_Handler():
 
     def generate_fitb_from_seed(self, rand_sentence_seed):
         nouns = self.entity_extractor[rand_sentence_seed].get_nouns()
-        blank_noun = nouns[random.randint(0, len(nouns))]
-        fitb_q1 = self.highlights[rand_sentence_seed][:self.highlights.find(blank_noun)]
-        fitb_q2 = self.highlights[rand_sentence_seed][(self.highlights.find(blank_noun) + len(blank_noun)) + 1:]
+        blank_noun = nouns[random.randint(0, len(nouns) - 1)]
+        fitb_q1 = self.highlights[rand_sentence_seed][:self.highlights[rand_sentence_seed].find(blank_noun)]
+        fitb_q2 = self.highlights[rand_sentence_seed][(self.highlights[rand_sentence_seed].find(blank_noun) + len(blank_noun)) + 1:]
         return {
             "blank": blank_noun,
             "question_b1": fitb_q1,
@@ -44,7 +44,7 @@ class Question_Handler():
         random_sentence_seeds = random.sample(range(0, len(self.highlights)), 3)
         fitb_questions = []
         for seed in random_sentence_seeds:
-            fitb_questions.append(generate_fitb_from_seed(seed))
+            fitb_questions.append(self.generate_fitb_from_seed(seed))
         return fitb_questions
 
     # I've done too many ap tests lmaoo

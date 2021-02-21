@@ -49,7 +49,7 @@ class Question_Handler():
 
     # I've done too many ap tests lmaoo
     def generate_frq(self):
-        sentence = self.highlights[random.randint(0, len(self.highlights) - 1)]
+        sentence = self.highlights[0]
         self.www_q = Question_Generator(sentence)
         return {
             "type": "frq",
@@ -57,6 +57,6 @@ class Question_Handler():
             "answer": self.www_q.get_answer()
         }
 
-    def check_answers(self, response):
-        self.semantic_comparator = Semantic_Comparator([self.www_q.get_answer(), response])
-        return semantic_comparator.get_semantic_similarity()
+    # def check_answers(self, response):
+    #     self.semantic_comparator = Semantic_Comparator([self.www_q.get_answer(), response])
+    #     return semantic_comparator.get_semantic_similarity()

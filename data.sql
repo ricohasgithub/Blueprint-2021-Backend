@@ -3,4 +3,4 @@ CREATE TABLE quiz (
 id INTEGER PRIMARY KEY,
 question TEXT NOT NULL,
 answer TEXT NOT NULL
-)
+);

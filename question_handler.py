@@ -29,8 +29,23 @@ class Question_Handler():
             "question_b2": fitb_q2
         }
 
+    def generate_fitb_from_seed(self, rand_sentence_seed):
+        nouns = self.entity_extractor[rand_sentence_seed].get_nouns()
+        blank_noun = nouns[random.randint(0, len(nouns))]
+        fitb_q1 = self.highlights[rand_sentence_seed][:self.highlights.find(blank_noun)]
+        fitb_q2 = self.highlights[rand_sentence_seed][(self.highlights.find(blank_noun) + len(blank_noun)) + 1:]
+        return {
+            "blank": blank_noun,
+            "question_b1": fitb_q1,
+            "question_b2": fitb_q2
+        }
+
     def generate_list_fitb(self):
-        pass
+        random_sentence_seeds = random.sample(range(0, len(self.highlights)), 3)
+        fitb_questions = []
+        for seed in random_sentence_seeds:
+            fitb_questions.append(generate_fitb_from_seed(seed))
+        return fitb_questions
 
     # I've done too many ap tests lmaoo
     def generate_frq(self):

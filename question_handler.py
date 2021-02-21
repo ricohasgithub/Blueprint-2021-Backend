@@ -24,6 +24,7 @@ class Question_Handler():
         fitb_q1 = self.highlights[rand_sentence_seed][:self.highlights[rand_sentence_seed].find(blank_noun)]
         fitb_q2 = self.highlights[rand_sentence_seed][(self.highlights[rand_sentence_seed].find(blank_noun) + len(blank_noun)) + 1:]
         return {
+            "type": "fitb",
             "blank": blank_noun,
             "question_b1": fitb_q1,
             "question_b2": fitb_q2
@@ -35,6 +36,7 @@ class Question_Handler():
         fitb_q1 = self.highlights[rand_sentence_seed][:self.highlights[rand_sentence_seed].find(blank_noun)]
         fitb_q2 = self.highlights[rand_sentence_seed][(self.highlights[rand_sentence_seed].find(blank_noun) + len(blank_noun)) + 1:]
         return {
+            "type": "fitb",
             "blank": blank_noun,
             "question_b1": fitb_q1,
             "question_b2": fitb_q2
@@ -53,6 +55,7 @@ class Question_Handler():
         self.question_gen = Question_Generator(sentence)
         self.www_q = self.question_gen.get_question()
         return {
+            "type": "frq",
             "question": self.www_q.get_question(),
             "answer": self.www_q.get_answer()
         }

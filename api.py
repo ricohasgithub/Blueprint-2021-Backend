@@ -27,7 +27,7 @@ def ml_func():
     frq_questions = hiqs_handler.generate_frq()
 
     # Both questions and answers together
-    responses = fitb_questions + frq_questions
+    responses = fitb_questions.update(frq_questions)
 
     questions = []
     answers = []

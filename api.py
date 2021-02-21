@@ -20,20 +20,21 @@ def ml_func():
     # CALL ML
     print(text)
     # SAVE TO DB
-    return
+    return "hello"
 
 @app.route('/getQs', methods=['GET'])
 def sendInfo():
     # return all questions and responses
-    quizes = db.execute("SELECT * FROM quiz")
-    questions = []
-    answers = []
-    total = []
-    for q in quizes:
-        questions.append(q["question"])
-        answers.append(q["answer"])
-    total.append(questions)
-    total.append(answers)
+    # quizes = db.execute("SELECT * FROM quiz")
+    # questions = []
+    # answers = []
+    # total = []
+    # for q in quizes:
+    #     questions.append(q["question"])
+    #     answers.append(q["answer"])
+    # total.append(questions)
+    # total.append(answers)
+    total = [["q1", "q2"], ["a1", "a2"]]
     return jsonify({'data' : total})
 
 @app.route('/save')

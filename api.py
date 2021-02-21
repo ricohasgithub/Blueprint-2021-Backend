@@ -23,11 +23,14 @@ def ml_func():
     print(text)
     hiqs_handler = Question_Handler(textList)
 
-    fitb_questions = hiqs_handler.generate_list_fitb()
+    questions = hiqs_handler.generate_list_fitb()
     frq_questions = hiqs_handler.generate_frq()
 
     # Both questions and answers together
-    responses = fitb_questions.update(frq_questions)
+    responses = []
+
+    for frq in frq_questions:
+        questions.append(frq)
 
     questions = []
     answers = []

@@ -1,7 +1,7 @@
-from spacy_nn import Spacy_Entity_Extractor
-from uni_sen_encoder import Semantic_Comparator
-from question_handler import Question_Handler
-from question_generator import Question_Generator
+from models.spacy_nn import Spacy_Entity_Extractor
+from models.uni_sen_encoder import Semantic_Comparator
+from models.question_handler import Question_Handler
+from models.question_generator import Question_Generator
 
 # extext = "42 is the answer to life, universe and everything."
 # q_gen = Question_Generator(extext)

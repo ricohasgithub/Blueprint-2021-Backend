@@ -1,13 +1,11 @@
 
 import spacy
-import en_core_web_sm
 
 class Spacy_Entity_Extractor():
 
     def __init__(self, text):
         # Load English tokenizer, tagger, parser, NER and word vectors
-        self.nlp = en_core_web_sm.load()
-        #self.nlp = spacy.load("en_core_web_sm")
+        self.nlp = spacy.load("en_core_web_sm")
         self.text_in = text
         self.doc = self.nlp(self.text_in)
         self.nouns = [chunk.text for chunk in self.doc.noun_chunks]

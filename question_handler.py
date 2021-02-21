@@ -13,13 +13,16 @@ class Question_Handler():
 
     def __init__(self, highlights):
         self.highlights = highlights
-        self.entity_extractor = Spacy_Entity_Extractor(highlights)
+        self.entity_extractor = []
+        for sentence in highlights:
+            self.entity_extractor.append(Spacy_Entity_Extractor(sentence))
 
     def generate_fitb(self):
-        nouns = self.entity_extractor.get_nouns()
+        rand_sentence_seed = random.randint(0, len(self.highlights))
+        nouns = self.entity_extractor[rand_sentence_seed].get_nouns()
         blank_noun = nouns[random.randint(0, len(nouns))]
-        fitb_q1 = self.highlights[0][:self.highlights.find(blank_noun)]
-        fitb_q2 = self.highlights[0][(self.highlights.find(blank_noun) + len(blank_noun)) + 1:]
+        fitb_q1 = self.highlights[rand_sentence_seed][:self.highlights.find(blank_noun)]
+        fitb_q2 = self.highlights[rand_sentence_seed][(self.highlights.find(blank_noun) + len(blank_noun)) + 1:]
         return {
             "blank": blank_noun,
             "question_b1": fitb_q1,

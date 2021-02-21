@@ -1,0 +1,6 @@
+-- SQLite
+CREATE TABLE quiz (
+id INTEGER PRIMARY KEY,
+term TEXT NOT NULL,
+answer TEXT NOT NULL
+)

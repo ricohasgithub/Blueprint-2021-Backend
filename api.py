@@ -17,6 +17,7 @@ def ml_func():
         print("run")
         text = json.loads(request.data)
         text = text['data']
+    textList = text.split(".")  
     # CALL ML
     print(text)
     # SAVE TO DB

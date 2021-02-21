@@ -16,7 +16,7 @@ class Question_Handler():
         nouns = self.entity_extractor.get_nouns()
         blank_noun = nouns[0]
         fitb_q1 = self.highlights[:self.highlights.find(blank_noun)]
-        fitb_q2 = self.highlights[(self.highlights.find(blank_noun) + 1):]
+        fitb_q2 = self.highlights[(self.highlights.find(blank_noun) + len(blank_noun)) + 1:]
         return {
             "blank": blank_noun,
             "fitb_q1": fitb_q1,

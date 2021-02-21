@@ -12,10 +12,10 @@ class Spacy_Entity_Extractor():
         self.verbs = [token.lemma_ for token in self.doc if token.pos_ == "VERB"]
 
     def get_nouns(self):
-        return nouns
+        return self.nouns
 
     def get_verbs(self):
-        return verbs
+        return self.verbs
 
     def print_lem(self):
         for entity in self.doc.ents:

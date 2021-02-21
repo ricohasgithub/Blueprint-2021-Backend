@@ -13,9 +13,15 @@ class Question_Handler():
         self.entity_extractor = Spacy_Entity_Extractor(highlights)
 
     def generate_fitb(self):
-        nouns = self.entity_extractor.get_nouns(self.highlights)
-        
-        self.fitb_q = self.highlights
+        nouns = self.entity_extractor.get_nouns()
+        blank_noun = nouns[0]
+        fitb_q1 = self.highlights[:self.highlights.find(blank_noun)]
+        fitb_q2 = self.highlights[(self.highlights.find(blank_noun) + 1):]
+        return {
+            "blank": blank_noun,
+            "fitb_q1": fitb_q1,
+            "fitb_q2": fitb_q2
+        }
 
     def check_answers(self, response):
         if len(self.www_q) == 0:

@@ -22,6 +22,9 @@ def ml_func():
     # CALL ML
     print(text)
     hiqs_handler = Question_Handler(textList)
+
+    questions = 
+
     # SAVE TO DB
     return "hello"
 

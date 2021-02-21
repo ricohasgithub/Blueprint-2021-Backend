@@ -25,9 +25,8 @@ class Question_Handler():
         fitb_q2 = self.highlights[rand_sentence_seed][(self.highlights[rand_sentence_seed].find(blank_noun) + len(blank_noun)) + 1:]
         return {
             "type": "fitb",
-            "blank": blank_noun,
-            "question_b1": fitb_q1,
-            "question_b2": fitb_q2
+            "answer": blank_noun,
+            "question": fitb_q1 + "____" + fitb_q2
         }
 
     def generate_fitb_from_seed(self, rand_sentence_seed):
@@ -37,9 +36,8 @@ class Question_Handler():
         fitb_q2 = self.highlights[rand_sentence_seed][(self.highlights[rand_sentence_seed].find(blank_noun) + len(blank_noun)) + 1:]
         return {
             "type": "fitb",
-            "blank": blank_noun,
-            "question_b1": fitb_q1,
-            "question_b2": fitb_q2
+            "answer": blank_noun,
+            "question": fitb_q1 + "____" + fitb_q2
         }
 
     def generate_list_fitb(self):
@@ -51,9 +49,8 @@ class Question_Handler():
 
     # I've done too many ap tests lmaoo
     def generate_frq(self):
-        sentence = highlights[0]
-        self.question_gen = Question_Generator(sentence)
-        self.www_q = self.question_gen.get_question()
+        sentence = self.highlights[random.randint(0, len(self.highlights) - 1)]
+        self.www_q = Question_Generator(sentence)
         return {
             "type": "frq",
             "question": self.www_q.get_question(),
@@ -61,8 +58,5 @@ class Question_Handler():
         }
 
     def check_answers(self, response):
-        if len(self.www_q) == 0:
-            return "no question generated"
-        else:
-            self.semantic_comparator = Semantic_Comparator([self.www_q.get_answer(), response])
-            return semantic_comparator.get_semantic_similarity()
+        self.semantic_comparator = Semantic_Comparator([self.www_q.get_answer(), response])
+        return semantic_comparator.get_semantic_similarity()

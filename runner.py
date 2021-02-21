@@ -10,6 +10,7 @@ from models.question_generator import Question_Generator
 
 q_handler = Question_Handler(["When Sebastian Thrun started working on self-driving cars, few people took him seriously.", "42 is the answer to life, universe and everything.", "Note that we may get different output because this program generates random number in range 0 and 9."])
 print(q_handler.generate_list_fitb())
+print(q_handler.generate_frq())
 
 '''
 text = ("When Sebastian Thrun started working on self-driving cars at "

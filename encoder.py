@@ -12,13 +12,3 @@ class Universal_Sentence_Encoder():
 
     def get_semantic_similarity(self, labels, features, rotation):
         corr = np.inner(features, features)
-        sns.set(font_scale=1.2)
-        g = sns.heatmap(
-            corr,
-            xticklabels=labels,
-            yticklabels=labels,
-            vmin=0,
-            vmax=1,
-            cmap="YlOrRd")
-        g.set_xticklabels(labels, rotation=rotation)
-        g.set_title("Semantic Textual Similarity")

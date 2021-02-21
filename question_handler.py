@@ -51,13 +51,15 @@ class Question_Handler():
     def generate_frq(self):
         sentence = highlights[0]
         self.question_gen = Question_Generator(sentence)
+        self.www_q = self.question_gen.get_question()
         return {
-            "question": self.question_gen.get_question()
+            "question": self.www_q.get_question(),
+            "answer": self.www_q.get_answer()
         }
 
     def check_answers(self, response):
         if len(self.www_q) == 0:
             return "no question generated"
         else:
-            self.semantic_comparator = Semantic_Comparator([self.www_q, response])
+            self.semantic_comparator = Semantic_Comparator([self.www_q.get_answer(), response])
             return semantic_comparator.get_semantic_similarity()
